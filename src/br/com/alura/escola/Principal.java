@@ -1,6 +1,7 @@
 package br.com.alura.escola;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -12,7 +13,7 @@ import br.com.alura.escola.servico.TurmaServico;
 
 public class Principal {
 
-	public static void main(String...strings) throws IOException {
+	public static void main(String...strings) throws IOException, InterruptedException, URISyntaxException {
 
 		var alunoServico = new AlunoServico();
 		var turmaServico = new TurmaServico();
