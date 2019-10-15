@@ -10,8 +10,9 @@ import java.net.http.HttpResponse;
 public class TesteHttpDAO {
 
 	public void testarConexaoHttp() throws IOException, InterruptedException, URISyntaxException {
-		URI uri = new URI("https://www.google.com.br");
-		HttpClient client = HttpClient.newHttpClient();
+		URI uri = new URI("https://www.google.com");
+		HttpClient client = HttpClient.newBuilder()
+				.followRedirects(HttpClient.Redirect.ALWAYS).build();
 		HttpRequest req = HttpRequest.newBuilder(uri).GET().build();
 		HttpResponse<String> resp = client.send(req, HttpResponse.BodyHandlers.ofString());
 		System.out.println(resp.body());
