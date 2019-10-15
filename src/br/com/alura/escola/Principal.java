@@ -36,5 +36,13 @@ public class Principal {
 		Optional<Aluno> aluno = alunoServico.listarPorCpf(4915774030L);
 		aluno.ifPresentOrElse(System.out::println, 
 				() -> System.out.println("Não há aluno cadastrado para este cpf"));
+
+		Optional<Aluno> alunoRecuperado = alunoServico.listarPorCpf(43647814016L)
+				.or(() -> alunoServico.listarPorCpf(49157745030L))
+				.or(() -> alunoServico.listarPorCpf(82757618083L))
+				.or(() -> alunoServico.listarPorCpf(41189989042L));
+
+		alunoRecuperado.ifPresentOrElse(System.out::println, 
+				() -> System.out.println("Não há aluno cadastrado para este cpf"));
 	}
 }
