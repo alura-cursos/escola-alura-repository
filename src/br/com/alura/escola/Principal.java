@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import br.com.alura.escola.dao.TesteHttpDAO;
+import br.com.alura.escola.dao.LivroDAO;
 import br.com.alura.escola.modelo.Turma;
 import br.com.alura.escola.servico.AlunoServico;
 import br.com.alura.escola.servico.TurmaServico;
@@ -17,7 +17,7 @@ public class Principal {
 
 		var alunoServico = new AlunoServico();
 		var turmaServico = new TurmaServico();
-		TesteHttpDAO dao = new TesteHttpDAO();
+		LivroDAO dao = new LivroDAO();
 
 		var alunos = alunoServico.listar().stream()
 				.flatMap(a -> Stream.ofNullable(a.getNome()))

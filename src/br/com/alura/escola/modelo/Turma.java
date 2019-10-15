@@ -30,6 +30,7 @@ public class Turma {
 		return "\nInicio da turma: " + inicio
 				+ "\nFim da turma: " + fim
 				+ "\nCurso: " + curso.nome
+				+ "\nLivro: " + curso.livro.getNome()
 				+ "\nAluno> " + alunos;
 	}
 }
