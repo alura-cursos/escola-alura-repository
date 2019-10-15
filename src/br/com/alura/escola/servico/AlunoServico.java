@@ -1,6 +1,8 @@
 package br.com.alura.escola.servico;
 
 import java.util.List;
+import java.util.Optional;
+
 import br.com.alura.escola.modelo.Aluno;
 
 public class AlunoServico {
@@ -14,5 +16,12 @@ public class AlunoServico {
 	public List<Aluno> listar() {
 		List<Aluno> alunos = List.of(priscila, fernando, rafael, aluno);
 		return alunos;
+	}
+
+	public Optional<Aluno> listarPorCpf(Long cpf) {
+		Optional<Aluno> aluno = listar().stream()
+				.filter(a -> a.getCpf().equals(cpf))
+				.findAny();
+		return aluno;
 	}
 }
