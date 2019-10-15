@@ -26,8 +26,8 @@ public class Principal {
 		System.out.println("Lista de alunos matriculados na escola: " + alunos);
 
 		Map<Curso, List<Turma>> turmasPorCurso = turmaServico.listar().stream()
-				.filter(a -> LocalDate.of(2019, 4, 3).equals(a.getInicio()))
-				.collect(Collectors.groupingBy(Turma::getCurso));
+				.collect(Collectors.groupingBy(Turma::getCurso,
+						Collectors.filtering(a -> a.getInicio().equals(LocalDate.of(2019, 6, 3)), Collectors.toList())));
 
 		System.out.println("Relação de turmas por curso: " + turmasPorCurso);
 	}
