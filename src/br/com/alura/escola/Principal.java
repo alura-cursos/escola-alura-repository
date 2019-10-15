@@ -1,21 +1,23 @@
 package br.com.alura.escola;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import br.com.alura.escola.modelo.Turma;
 import br.com.alura.escola.servico.AlunoServico;
+import br.com.alura.escola.servico.LivroServico;
 import br.com.alura.escola.servico.TurmaServico;
 
 public class Principal {
 
-	public static void main(String...strings) throws IOException, InterruptedException, URISyntaxException {
+	public static void main(String...strings) {
 
 		var alunoServico = new AlunoServico();
 		var turmaServico = new TurmaServico();
+		var livroServico = new LivroServico();
+
+		livroServico.listar();
 
 		var alunos = alunoServico.listar().stream()
 				.flatMap(a -> Stream.ofNullable(a.getNome()))

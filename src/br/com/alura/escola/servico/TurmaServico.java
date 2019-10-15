@@ -1,7 +1,5 @@
 package br.com.alura.escola.servico;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,7 +12,7 @@ public class TurmaServico {
 	AlunoServico alunoServico = new AlunoServico();
 	CursoServico cursoServico = new CursoServico();
 
-	public List<Turma> listar() throws URISyntaxException, IOException, InterruptedException {
+	public List<Turma> listar() {
 		List<Curso> cursos = cursoServico.listar();
 		List<Aluno> alunos = alunoServico.listar();
 		return List.of(

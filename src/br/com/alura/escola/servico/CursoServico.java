@@ -1,7 +1,5 @@
 package br.com.alura.escola.servico;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.http.HttpResponse;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,14 +13,14 @@ public class CursoServico {
 
 	LivroDAO livroDAO = new LivroDAO();
 
-	public List<Livro> pegarLivros() throws URISyntaxException, IOException, InterruptedException {
-		HttpResponse<String> livrosApi = livroDAO.criarRequisicao();
+	public List<Livro> pegarLivros() {
+		HttpResponse<String> livrosApi = livroDAO.listarSincronamente();
 		return Stream.of(livrosApi.body().split("\n"))
 				.map(LivroServico::criar)
 				.collect(Collectors.toList());
 	}
 
-	public List<Curso> listar() throws URISyntaxException, IOException, InterruptedException {
+	public List<Curso> listar() {
 		List<Livro> livros = pegarLivros();
 		Curso java = new Curso("Java OO", "Conceitos básicos de OO", "12 horas", livros.get(0));
 		Curso spring = new Curso("Spring", "Novidades do spring", "12 horas", livros.get(1));
